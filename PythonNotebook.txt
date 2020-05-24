@@ -1,0 +1,164 @@
+第一部分 Linux简介
+1   服务器多用Linux系统，对于本地电脑Linux多用Ubuntu版本的Linux对于远程服务器端的Linux
+    多用CentOS版本的。
+
+2   Linux常用快捷键
+    (1) Terminal 放大/缩小：control + shift + = / control + -
+
+3   Linux Terminal 常用命令
+    (1) ls
+    (2) cd
+    (3) pwd
+    (4) touch [file name]       if file not exist, create a new file.
+    (5) mkdir [direcory name]
+    (6) rm          default is remove a file, use rm -r to remove a directory
+    (7) clear
+    (8) command --help          show details about the command
+    (9) man command             show details about the command
+    
+4   与文件、目录相关的命令
+    (1) ls -a                   show all the files and directories in current
+                                path, include the hidden files and directories
+    (2) ls -l                   show the details of files and directories in 
+                                current path.
+    (3)ls -lh                   show the details of files and directories in
+                                current path.
+    (4) cd / cd ~               use the two method to cd the /home
+    (5) cd .                    keep the current path
+    (6) cd ..                   go to the upper directory
+    (7) cd -                    change the directory between the latest two
+                                directory
+
+第二部分 Python
+
+一  简介
+1   python特点
+    <1> python是解释型语言
+    <2> 可移植性好
+    <3> 简单直观、一样强大
+    <4> 开源
+    <5> 容易理解，适合快速开发
+    <6> 完全面向对象
+    <7> 拥有一个强大的标准库
+    <8> 提供大量第三方模块
+
+2   python优缺点
+    <1> 优点
+        简单、易学
+        免费、开源
+        面向对象、丰富的库
+        可扩展性强
+    <2> 缺点
+        运行速度
+        国内市场较小
+        中文资料不足
+
+3   python编程注意事项
+    <1> python对于缩进有严格的要求
+    <2> py2不支持中文，py3支持中文
+    <3> python对于文件命名：小写字母，数字，下划线，不能以数字开头
+
+二  基本语法
+
+1   算术运算符
+    + — * / //(取整除) % **(幂)
+    eg: 9 / 2 = 4.5
+        9 // 2 =4
+        2 ** 4 = 16
+    note：
+        在python中*还可以用于字符串
+        如：”a“ * 5 = "aaaaa"
+        ** 优先级最高
+
+2   变量
+    definition: 
+        var_name = var_value
+
+3   数据类型
+    数字型：int float bool(非0即真) complex(非数字型)
+    非数字型：字符串 列表 元组 字典
+    Note: 数字型变量之间可以直接计算，True当做1，Flase当做0
+          字符串之间使用 ”+“ 拼接字符串
+          数字型和字符串之间无法进行计算
+          Python把0、空字符串''和None看成 False，其他数值和非空字符串都看成 True
+
+4   格式化输出
+    print默认会在结尾处增加换行，如果不需要换行：print("...", end="")
+    %s 输出字符串
+    %d 有符号十进制整数，%06d 表示输出占位为6的十进制整数，不足用0补齐
+    %f 浮点数 %. 2f 表示小数点后只显示两位
+    %% 输出%
+
+5   分支
+    基本格式: if condition1:
+                sentences
+            elif condition2:
+                sentences
+            else :
+                sentences 
+
+6   循环
+    基本格式：while condition:
+                sentences
+    Note: 在python中break和continue和c语言中使用方法一样。
+
+7   高级变量类型
+    <1> 列表 List
+        相当于其他语言中的数组。
+        详细：见pycharm的代码。
+    <2> 元组 Tuple
+        应用场景：函数的参数、函数的返回值、格式字符串、保护列表数据不被修改
+        tuple(list)可以把列表转化为元组，list(tuple)可以把元组转化为列表
+        详细见pycharm的代码
+    <3> 字典 dictionary
+        字典是无序的，通常用于描述一个物体的相关信息，使用{}定义，使用key-value存储
+        详细：见pycharm的代码
+    <4> 字符串 string
+        详细：见pycharm的代码
+
+8   python切片
+    切片适用于字符串、列表、元组
+    格式：string[start_index:end_index:step]
+    最后一个元素的索引是-1，可以倒叙切片
+    详细：见pycharm的代码
+
+9   公共方法
+    <1> 内置函数
+        len(item) 
+        del(item)
+        max(item) 
+        min(item)
+        cmp(item1, item2) <python3取消了>
+        Note:如果用max和min比较字典时，只是用字典的key进行比较
+    <2> 切片
+    <3> + * 运算符
+        tuple 、list 、string 可以使用 + 和 * 进行运算
+    <4> 成员运算符：in 和 not in
+        用于tuple 、list 、string 、dict 
+        用于判断是否在容器中（对于字典是判断key）
+    <5> 完整的for循环：for-else
+        for item in container: 
+            body sentences
+        else:
+            sentences(if no break)
+
+10  变量进阶
+    <1> 引用
+        使用id(var)查看变量的地址
+    <2> 可变类型和不可变类
+        不可变类型：（内存中的数据不允许被修改）
+            数字类型：int bool float complex long(2.x)
+            字符串：str
+            元组：tuple
+        可变类型：（内存中的数据可以被修改）
+            列表：list
+            字典：dict
+        Note：字典的key不能是可变类型，所有可变类型都可以作为key
+
+11  类 class
+    <1>  类的命名上采用大驼峰命名法
+    <2>  python中对象几乎无处不在，变量、数据、函数都是对象
+         使用dir函数查看对象的所有方法。
+         __methodName__ 是内置函数
+    <3> 详细见pycharm的代码
+    <4> 在python中没有真正意义上的私有
