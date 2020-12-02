@@ -39,11 +39,11 @@
 在统计语言模型中，自然语言被当做一个随机过程，其中每一个语言单位包括字、词、句子、段落和篇章等都看做有一定概率分布的随机变量。
 
 下面来看一个具体的例子，如果一个句子S由若干个词组成，如何求P(S)？  
- 假设句子 S 由 $w_1, w_2, w_3,... , w_n$ 组成直接去计算P(S)将会很困难(why?具体原因可以看我的另一篇文章)，在统计语言模型中我们通常通过计算离散的条    件概率乘积来计算P(S)，公式如下：
+ 假设句子 S 由 w<sub>1</sub>, w<sub>2</sub>,... , w<sub>n</sub> 组成直接去计算P(S)将会很困难(why?具体原因可以看我的另一篇文章)，在统计语言模型中我们通常通过计算离散的条    件概率乘积来计算P(S)，公式如下：
 $$
 P(S) =     P(w_1, w_2, ...,w_n)= \prod_{i = 1}^{n}P(w_i|h_i)
 $$
-公式中的$h_i$为${w_1,w_2,...w_{i-1},w_{i+1},...w_n}$，实际上就是$w_i$的上下文，由马尔科夫链可以对公式进行简化，对于实际的应用中也是这么处理的，当前的$w_i$只与其前面若干个词相关，因此得出以下常用的n-gram模型：  ![n-gram table](https://github.com/wxd-neu/AI-Learning/blob/master/Source/Pictures/n-gram.png)
+公式中的h<sub>i</sub>为{w<sub>1</sub>,w<sub>2</sub>,...w<sub>i-1</sub>,w<sub>i+1</sub>,...w<sub>n</sub>}，实际上就是w<sub>i</sub>的上下文，由马尔科夫链可以对公式进行简化，对于实际的应用中也是这么处理的，当前的w<sub>i</sub>只与其前面若干个词相关，因此得出以下常用的n-gram模型：  ![n-gram table](https://github.com/wxd-neu/AI-Learning/blob/master/Source/Pictures/n-gram.png)
 
 
 
