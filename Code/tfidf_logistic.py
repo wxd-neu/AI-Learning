@@ -19,8 +19,6 @@ def data_process(data_path=DATA_PATH):
     data_df = pd.read_csv(data_path, sep=',')
     data_df = data_df.sample(frac=1.0, random_state=1)  # 设置random_state保证可重复
     data_review, data_label = chinese_segmetation(data_df)
-    for i in range(20):
-        print(data_review[i])
     train_data, test_data = build_data(0.9, data_review, data_label)
 
     return train_data, test_data
@@ -99,10 +97,7 @@ def tfidf_logisticRegression(train_data: dict, test_data: dict):
     data_reviews.extend(test_reviews)
     div_index = len(train_reviews)
 
-    for i in range(20):
-        print(train_labels[i],train_reviews[i])
-
-    tfidf_vectorizer = TfidfVectorizer(ngram_range=(1, 1), max_features=20000)
+    tfidf_vectorizer = TfidfVectorizer(ngram_range=(1, 1), max_features=10000)
     data_reviews = tfidf_vectorizer.fit_transform(data_reviews)
 
     lr_model = LogisticRegression(multi_class='auto', n_jobs=4,
@@ -113,13 +108,6 @@ def tfidf_logisticRegression(train_data: dict, test_data: dict):
     print("f1_score: ", f1_score(test_labels, val_pred, average='macro'))
     print("precision_score:", precision_score(test_labels, val_pred))
     print("recall_score:", recall_score(test_labels, val_pred))
-
-    # RidgeClassifier Model
-    rc_model = RidgeClassifier(alpha=0.3)
-    rc_model.fit(data_reviews[:div_index], train_labels)
-    # predict the class
-    val_pred = rc_model.predict(data_reviews[div_index:])
-    print(f1_score(test_labels, val_pred, average='macro'))
 
 
 if __name__ == "__main__":
